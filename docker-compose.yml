@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  node-api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: nodeapi
+    ports:
+      - "8080:3000"
+    container_name: nodeenv
+    entrypoint: "bash start.sh"
+#    entrypoint: "sleep infinity"
+    volumes:
+    - ./:/node-app
