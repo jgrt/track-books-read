@@ -1,0 +1,3 @@
+./node_modules
+./mongo-test/init-mongo.js
+./mongo-test/mongo-data
