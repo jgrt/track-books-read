@@ -7,6 +7,13 @@ const swaggerUi = require('swagger-ui-express');
 const bookRouter = require("./routes/books");
 app.use("/library", bookRouter);
 
+const mongoose = require("mongoose");
+
+const url = 'mongodb://0.0.0.0:27017/book-db'
+
+mongoose.connect(url, {useNewUrlParser:true})
+
+
 const swaggerDefinition = {
     info: {
             title: 'Books API',

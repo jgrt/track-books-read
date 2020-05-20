@@ -10,6 +10,19 @@ services:
       - "8080:3000"
     container_name: nodeenv
     entrypoint: "bash start.sh"
-#    entrypoint: "sleep infinity"
     volumes:
     - ./:/node-app
+
+  database:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=jgrt
+      - MONGO_INITDB_ROOT_PASSWORD=jgrt@123
+      - MONGO_INITDB_DATABASE=book-db
+    ports:
+      - 27017:27017
+    restart: always
+    container_name: mongo-cont
+    volumes:
+      - ./data/db/:/data/db
+
