@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Books = require('../models/books');
-
+//const Books = require('../models/books');
+const bookController = require('../controllers/books');
 
 /**
 * @swagger
@@ -12,32 +12,10 @@ const Books = require('../models/books');
 *           '200':
 *               description: A successful response
 */
-router.get('/books', (req, res) => {
-  Books.find({}).exec(function(err, books){
-    if(err) {
-        res.json({message: err});
-    } else {
-        res.json(books);
-    }
-  });
-});
-
-
-
-router.post('/book', (req, res) =>{
-  const book = new Books({
-    name : req.body.name,
-    author: req.body.author
-  });
-
-  book.save()
-    .then(data => {
-      res.json(data);
-    })
-    .catch(err => {
-      res.json({message: err});
-    });
-});
-
+router.get('/books', bookController.findAll);
+router.post('/book', bookController.create);
+router.get('/book/:id', bookController.findOne);
+router.put('/book/:id', bookController.update);
+router.delete('/book/:id', bookController.delete);
 
 module.exports = router;
