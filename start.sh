@@ -1,2 +1,2 @@
-npm install --save
+# npm install --save
 npm start
