@@ -7,7 +7,6 @@ services:
       dockerfile: Dockerfile
     image: nodeapi
     restart: unless-stopped
-    env_file: .env
     environment:
       - MONGO_HOSTNAME=database
     ports:
@@ -23,12 +22,10 @@ services:
     image: mongo:latest
     container_name: mongo-cont
     restart: always 
-    # env_file: .env
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=rootpassword
       - MONGO_INITDB_DATABASE=test
-
     ports:
       - "27017-27019:27017-27019"
     volumes:
